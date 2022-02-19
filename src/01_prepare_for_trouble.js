@@ -39,7 +39,7 @@ const examplePokemon = require("../data/poke");
  */
 function getAllPokemonNames(pokemon) {
   let namesArr = []
-  for(i = 0; i < pokemon.length; i++){
+  for(let i = 0; i < pokemon.length; i++){
     namesArr.push(pokemon[i].name)
   }
   return namesArr
@@ -58,7 +58,7 @@ function getAllPokemonNames(pokemon) {
  */
 function getHighestAttackStatScore(pokemon) {
   let highest = 0
-  for(i = 0; i < pokemon.length; i++){
+  for(let i = 0; i < pokemon.length; i++){
       if(pokemon[i].stats[2].value > highest){
         highest = pokemon[i].stats[2].value
     }
@@ -80,7 +80,7 @@ function getHighestAttackStatScore(pokemon) {
 function getAverageTotalStatScore(pokemon) {
   let sum = 0
   let average = 0
-  for(i = 0; i < pokemon.length; i++){
+  for(let i = 0; i < pokemon.length; i++){
     sum += pokemon[i].stats[0].value
     average = sum/pokemon.length
   }
