@@ -35,7 +35,20 @@ const exampleWeaknesses = require("../data/weaknesses");
  *  filterByType(pokemon, "Shadow")
  *  //> [];
  */
-function filterByType() {}
+function filterByType(pokemon, type) {
+  let matchingType = []
+  for(let i = 0; i < pokemon.length; i++){
+    for(let j = 0; j < pokemon[i].type.length; j++){
+      if(!type){
+        type = "Normal"
+      }
+      if(pokemon[i].type[j].toUpperCase() === type.toUpperCase()){
+        matchingType.push(pokemon[i])
+      } 
+    }
+  }
+  return matchingType
+}
 
 /**
  * getPokemonNamesMostEffectiveAgainstType()
@@ -56,7 +69,25 @@ function filterByType() {}
     *  getPokemonNamesMostEffectiveAgainstType(pokemon, weaknesses, "copyright infringement");
  *  //> [];
  */
-function getPokemonNamesMostEffectiveAgainstType() {}
+function getPokemonNamesMostEffectiveAgainstType(pokemon, weaknesses, type) {
+  let weakType = weaknesses[type]
+  let strongType = []
+  if(!weakType){
+    return `No Pokemon found of type: '${type}'.`
+  }
+  if(pokemon.length === 0){
+    return strongType
+  }
+  for(poke of pokemon){
+    for(oneType of poke.type){
+      if(weakType.includes(oneType) && !strongType.includes(poke.name)){
+        strongType.push(poke.name)
+      } 
+  }
+}
+  return strongType
+}
+//access array where what types the given type are weak to 
 
 module.exports = {
     filterByType,
